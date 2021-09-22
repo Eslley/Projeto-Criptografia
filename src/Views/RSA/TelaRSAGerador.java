@@ -5,6 +5,13 @@
  */
 package Views.RSA;
 
+import RSA.RSAKeyPairGenerator;
+import java.io.File;
+import java.io.IOException;
+import java.security.NoSuchAlgorithmException;
+import java.util.Base64;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFileChooser;
 
 /**
@@ -45,7 +52,7 @@ public class TelaRSAGerador extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel1.setText("Tamanho da Chave");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "515 bit", "1024 bit", "2048 bit", "3072 bit" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "515", "1024", "2048", "3072" }));
 
         jButton1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jButton1.setText("Gerar Par de Chaves");
@@ -122,11 +129,30 @@ public class TelaRSAGerador extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        JFileChooser chooser = new JFileChooser();
-        chooser.setDialogTitle("Selecionar Pasta");
-        chooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+//        JFileChooser chooser = new JFileChooser();
+//        chooser.setDialogTitle("Selecionar Pasta");
+//        chooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+//        File file = chooser.getSelectedFile();
+//        String fullPath = file.getAbsolutePath();
+        try {
+            System.out.println(jComboBox1.getSelectedItem().toString());
+            int keySize = Integer.parseInt(jComboBox1.getSelectedItem().toString());
+            RSAKeyPairGenerator keyPairGenerator = new RSAKeyPairGenerator(keySize);
+            keyPairGenerator.writeToFile("RSA/privateKey", keyPairGenerator.getPrivateKey().getEncoded());
+            keyPairGenerator.writeToFile("RSA/publicKey", keyPairGenerator.getPublicKey().getEncoded());
+            System.out.println(Base64.getEncoder().encodeToString(keyPairGenerator.getPublicKey().getEncoded()));
+            System.out.println(Base64.getEncoder().encodeToString(keyPairGenerator.getPrivateKey().getEncoded()));
+            
+            jTextArea1.setText(Base64.getEncoder().encodeToString(keyPairGenerator.getPublicKey().getEncoded()));
+            jTextArea2.setText(Base64.getEncoder().encodeToString(keyPairGenerator.getPrivateKey().getEncoded()));
+            
+            
+            
+        } catch (NoSuchAlgorithmException | IOException ex) {
+            Logger.getLogger(TelaRSAGerador.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
-        chooser.showOpenDialog(this);
+//        chooser.showOpenDialog(this);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
