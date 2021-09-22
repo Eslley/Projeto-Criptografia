@@ -5,6 +5,7 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.io.UnsupportedEncodingException;
 import java.security.KeyPair;
 import java.security.KeyPairGenerator;
 import java.security.PrivateKey;
@@ -71,7 +72,7 @@ public class EncriptaDecriptaRSA {
   /**
    * Decriptografa o texto puro usando chave privada.
    */
-  public static String decriptografa(byte[] texto) {
+  public static String decriptografa(byte[] texto) throws UnsupportedEncodingException {
     byte[] dectyptedText = null;
 
     try {   
@@ -83,9 +84,8 @@ public class EncriptaDecriptaRSA {
     } catch (Exception ex) {
       ex.printStackTrace();
     }
-
-    //return Base64.getDecoder().decode(dectyptedText);
-    return Base64.getEncoder().encodeToString(dectyptedText);
+    
+    return new String (dectyptedText, "ISO-8859-1");
     
   }
 }
