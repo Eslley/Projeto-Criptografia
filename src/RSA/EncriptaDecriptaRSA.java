@@ -1,15 +1,15 @@
 package RSA;
 
-import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
 import java.io.UnsupportedEncodingException;
-import java.security.KeyPair;
-import java.security.KeyPairGenerator;
+import java.security.KeyFactory;
+import java.security.NoSuchAlgorithmException;
 import java.security.PrivateKey;
 import java.security.PublicKey;
+import java.security.spec.InvalidKeySpecException;
+import java.security.spec.PKCS8EncodedKeySpec;
+import java.security.spec.X509EncodedKeySpec;
 import java.util.Base64;
 import javax.crypto.Cipher;
 
@@ -20,8 +20,8 @@ public class EncriptaDecriptaRSA {
   
   public static String cipherInstance = "";
   
-  public static PublicKey chavePub;
-  public static PrivateKey chavePri;
+  public static PublicKey chavePub = null;
+  public static PrivateKey chavePri = null;
 
   public static String getPublicKey(String path) {
       String chave = "";
@@ -53,6 +53,38 @@ public class EncriptaDecriptaRSA {
       return chave;
   }
   
+  public static void setPublicKey(String base64PublicKey){
+        PublicKey publicKey = null;
+        try{
+            X509EncodedKeySpec keySpec = new X509EncodedKeySpec(Base64.getDecoder().decode(base64PublicKey.getBytes()));
+            KeyFactory keyFactory = KeyFactory.getInstance("RSA");
+            publicKey = keyFactory.generatePublic(keySpec);
+            chavePub = publicKey;
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        } catch (InvalidKeySpecException e) {
+            e.printStackTrace();
+        }
+        chavePub = publicKey;
+    }
+
+    public static void setPrivateKey(String base64PrivateKey){
+        PrivateKey privateKey = null;
+        PKCS8EncodedKeySpec keySpec = new PKCS8EncodedKeySpec(Base64.getDecoder().decode(base64PrivateKey.getBytes()));
+        KeyFactory keyFactory = null;
+        try {
+            keyFactory = KeyFactory.getInstance("RSA");
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        }
+        try {
+            privateKey = keyFactory.generatePrivate(keySpec);
+        } catch (InvalidKeySpecException e) {
+            e.printStackTrace();
+        }
+        chavePri = privateKey;
+    }
+  
   public static String criptografa(String texto) {
     byte[] cipherText = null;
 
@@ -69,15 +101,11 @@ public class EncriptaDecriptaRSA {
     return Base64.getEncoder().encodeToString(cipherText);
   }
 
-  /**
-   * Decriptografa o texto puro usando chave privada.
-   */
   public static String decriptografa(byte[] texto) throws UnsupportedEncodingException {
     byte[] dectyptedText = null;
 
     try {   
       final Cipher cipher = Cipher.getInstance(cipherInstance);
-      // Decriptografa o texto puro usando a chave Privada
       cipher.init(Cipher.DECRYPT_MODE, chavePri);
       dectyptedText = cipher.doFinal(texto);
 

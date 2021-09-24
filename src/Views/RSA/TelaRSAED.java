@@ -346,6 +346,13 @@ public class TelaRSAED extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
   
+        if(rsa.chavePub == null && chavePublica.getText() == "") {
+            JOptionPane.showMessageDialog(this, "Informe a chave pública!");
+            return;
+        } else if(chavePublica.getText() != "") {
+            rsa.setPublicKey(chavePublica.getText());
+        }
+        
         rsa.cipherInstance = (String) chooseCipherE.getSelectedItem();
         try {
             String textoEncriptado = rsa.criptografa(textoClaroE.getText());
@@ -359,6 +366,14 @@ public class TelaRSAED extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        
+        if(rsa.chavePub == null && chavePrivada.getText() == "") {
+            JOptionPane.showMessageDialog(this, "Informe a chave privada!");
+            return;
+        } else if(chavePrivada.getText() != "") {
+            rsa.setPrivateKey(chavePrivada.getText());
+        }
+        
         rsa.cipherInstance = (String) chooseCipherD.getSelectedItem();
         try {
             
