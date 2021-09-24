@@ -346,7 +346,7 @@ public class TelaRSAED extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
   
-        if(rsa.chavePub == null && chavePublica.getText() == "") {
+        if(rsa.pubKey == null && chavePublica.getText() == "") {
             JOptionPane.showMessageDialog(this, "Informe a chave pública!");
             return;
         } else if(chavePublica.getText() != "") {
@@ -367,7 +367,7 @@ public class TelaRSAED extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         
-        if(rsa.chavePub == null && chavePrivada.getText() == "") {
+        if(rsa.pubKey == null && chavePrivada.getText() == "") {
             JOptionPane.showMessageDialog(this, "Informe a chave privada!");
             return;
         } else if(chavePrivada.getText() != "") {

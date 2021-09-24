@@ -6,6 +6,17 @@
 package Views.AES;
 
 import AES.AESUtil;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 
@@ -46,9 +57,9 @@ public class TelaAES extends javax.swing.JFrame {;
         jButton5 = new javax.swing.JButton();
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
-        chaveSecretaE = new javax.swing.JTextField();
+        secretKeyE = new javax.swing.JTextField();
         chooseModoOE = new javax.swing.JComboBox();
-        tamanhoChaveE = new javax.swing.JComboBox();
+        keySizeE = new javax.swing.JComboBox();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
@@ -122,10 +133,10 @@ public class TelaAES extends javax.swing.JFrame {;
             }
         });
 
-        tamanhoChaveE.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "128", "192", "256" }));
-        tamanhoChaveE.addActionListener(new java.awt.event.ActionListener() {
+        keySizeE.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "128", "192", "256" }));
+        keySizeE.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tamanhoChaveEActionPerformed(evt);
+                keySizeEActionPerformed(evt);
             }
         });
 
@@ -143,8 +154,8 @@ public class TelaAES extends javax.swing.JFrame {;
                             .addComponent(jLabel12))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(chaveSecretaE)
-                            .addComponent(tamanhoChaveE, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addComponent(secretKeyE)
+                            .addComponent(keySizeE, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel4)
                         .addGap(18, 18, 18)
@@ -180,17 +191,17 @@ public class TelaAES extends javax.swing.JFrame {;
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel11)
-                    .addComponent(tamanhoChaveE, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(keySizeE, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel12)
-                    .addComponent(chaveSecretaE, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(secretKeyE, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jButton2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(89, 89, 89))
         );
 
@@ -297,8 +308,8 @@ public class TelaAES extends javax.swing.JFrame {;
                 .addComponent(jButton3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel9)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(79, 79, 79))
         );
 
@@ -329,7 +340,7 @@ public class TelaAES extends javax.swing.JFrame {;
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 432, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 0, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -338,21 +349,21 @@ public class TelaAES extends javax.swing.JFrame {;
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        int bitsNeeded = Integer.parseInt(tamanhoChaveE.getSelectedItem().toString())/8;
-        if(chaveSecretaE.getText().getBytes().length != bitsNeeded) {
+        int bitsNeeded = Integer.parseInt(keySizeE.getSelectedItem().toString())/8;
+        if(secretKeyE.getText().getBytes().length != bitsNeeded) {
             JOptionPane.showMessageDialog(this, "Sua chave secreta precisa ter "+ bitsNeeded + " bits de tamanho");
         } else {
-            if(aes.key == null && chaveSecretaE.getText() == ""){
+            if(aes.key == null && secretKeyE.getText() == ""){
                 JOptionPane.showMessageDialog(this, "Informe a chave secreta!");
                 return;
-            }else if(chaveSecretaE.getText()!=""){
-                aes.setPrivateKey(chaveSecretaE.getText());
+            }else if(secretKeyE.getText()!=""){
+                aes.setPrivateKey(secretKeyE.getText());
             }
 
             try{
                 aes.mode = chooseModoOE.getSelectedItem().toString();
-                String textoEncriptado = aes.encrypt(textoClaroE.getText());
-                textoEncriptadoE.setText(textoEncriptado);
+                String encriptedText = aes.encrypt(textoClaroE.getText());
+                textoEncriptadoE.setText(encriptedText);
                 aes.setPrivateKey(null);
             }catch(Exception e){
                  JOptionPane.showMessageDialog(this, "Erro ao encriptar texto!");
@@ -373,8 +384,8 @@ public class TelaAES extends javax.swing.JFrame {;
             
             try{
                 aes.mode = chooseModoOD.getSelectedItem().toString();
-                String textoDecriptado = aes.decrypt(textoEncriptadoD.getText());
-                textoClaroD.setText(textoDecriptado);
+                String decriptedText = aes.decrypt(textoEncriptadoD.getText());
+                textoClaroD.setText(decriptedText);
             }catch(Exception e){
                 JOptionPane.showMessageDialog(this, "Erro ao decriptar texto!");
             }
@@ -388,14 +399,34 @@ public class TelaAES extends javax.swing.JFrame {;
         chooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
         
         
-        textoClaroE.setText(chooser.getSelectedFile().getAbsolutePath());
-       
+      
         chooser.showOpenDialog(this);
+         try {
+        BufferedReader buffRead = new BufferedReader(new FileReader(chooser.getSelectedFile().getAbsolutePath()));	
+            String line = "";
+            String text= "";
+		while (true) {
+			if (line != null) {
+                                text +=line;
+
+			} else
+				break;
+			line = buffRead.readLine();
+                        
+		}
+            buffRead.close();
+            textoClaroE.setText(text);
+        } catch (IOException ex) {
+            Logger.getLogger(TelaAES.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        
+       
     }//GEN-LAST:event_jButton5ActionPerformed
 
-    private void tamanhoChaveEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tamanhoChaveEActionPerformed
+    private void keySizeEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_keySizeEActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_tamanhoChaveEActionPerformed
+    }//GEN-LAST:event_keySizeEActionPerformed
 
     private void chooseModoOEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chooseModoOEActionPerformed
         // TODO add your handling code here:
@@ -441,7 +472,6 @@ public class TelaAES extends javax.swing.JFrame {;
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField chaveSecretaD;
-    private javax.swing.JTextField chaveSecretaE;
     private javax.swing.JComboBox chooseModoOD;
     private javax.swing.JComboBox chooseModoOE;
     private javax.swing.JButton jButton2;
@@ -465,8 +495,9 @@ public class TelaAES extends javax.swing.JFrame {;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JComboBox keySizeE;
+    private javax.swing.JTextField secretKeyE;
     private javax.swing.JComboBox tamanhoChaveD;
-    private javax.swing.JComboBox tamanhoChaveE;
     private javax.swing.JTextArea textoClaroD;
     private javax.swing.JTextArea textoClaroE;
     private javax.swing.JTextArea textoEncriptadoD;

@@ -20,37 +20,37 @@ public class EncriptaDecriptaRSA {
   
   public static String cipherInstance = "";
   
-  public static PublicKey chavePub = null;
-  public static PrivateKey chavePri = null;
+  public static PublicKey pubKey = null;
+  public static PrivateKey priKey = null;
 
   public static String getPublicKey(String path) {
-      String chave = "";
+      String key = "";
       try {
         ObjectInputStream inputStream = null;
 
         inputStream = new ObjectInputStream(new FileInputStream(path));
-        chavePub = (PublicKey) inputStream.readObject();
-        chave = Base64.getEncoder().encodeToString(chavePub.getEncoded());
+        pubKey = (PublicKey) inputStream.readObject();
+        key = Base64.getEncoder().encodeToString(pubKey.getEncoded());
       } catch (Exception e) {
           
       }
       
-      return chave;
+      return key;
   }
   
   public static String getPrivateKey(String path) {
-      String chave = "";
+      String key = "";
       try {
         ObjectInputStream inputStream = null;
         
         inputStream = new ObjectInputStream(new FileInputStream(path));
-        chavePri = (PrivateKey) inputStream.readObject();
-        chave = Base64.getEncoder().encodeToString(chavePri.getEncoded());
+        priKey = (PrivateKey) inputStream.readObject();
+        key = Base64.getEncoder().encodeToString(priKey.getEncoded());
       } catch (Exception e) {
           
       }
       
-      return chave;
+      return key;
   }
   
   public static void setPublicKey(String base64PublicKey){
@@ -59,13 +59,13 @@ public class EncriptaDecriptaRSA {
             X509EncodedKeySpec keySpec = new X509EncodedKeySpec(Base64.getDecoder().decode(base64PublicKey.getBytes()));
             KeyFactory keyFactory = KeyFactory.getInstance("RSA");
             publicKey = keyFactory.generatePublic(keySpec);
-            chavePub = publicKey;
+            pubKey = publicKey;
         } catch (NoSuchAlgorithmException e) {
             e.printStackTrace();
         } catch (InvalidKeySpecException e) {
             e.printStackTrace();
         }
-        chavePub = publicKey;
+        pubKey = publicKey;
     }
 
     public static void setPrivateKey(String base64PrivateKey){
@@ -82,7 +82,7 @@ public class EncriptaDecriptaRSA {
         } catch (InvalidKeySpecException e) {
             e.printStackTrace();
         }
-        chavePri = privateKey;
+        priKey = privateKey;
     }
   
   public static String criptografa(String texto) {
@@ -92,7 +92,7 @@ public class EncriptaDecriptaRSA {
       
       final Cipher cipher = Cipher.getInstance(cipherInstance);
       // Criptografa o texto puro usando a chave P�lica
-      cipher.init(Cipher.ENCRYPT_MODE, chavePub);
+      cipher.init(Cipher.ENCRYPT_MODE, pubKey);
       cipherText = cipher.doFinal(texto.getBytes());
     } catch (Exception e) {
       e.printStackTrace();
@@ -106,7 +106,7 @@ public class EncriptaDecriptaRSA {
 
     try {   
       final Cipher cipher = Cipher.getInstance(cipherInstance);
-      cipher.init(Cipher.DECRYPT_MODE, chavePri);
+      cipher.init(Cipher.DECRYPT_MODE, priKey);
       dectyptedText = cipher.doFinal(texto);
 
     } catch (Exception ex) {

@@ -5,6 +5,7 @@
  */
 package Views;
 
+import Views.AES.TelaAES;
 import Views.RSA.TelaRSAOpcoes;
 
 /**
@@ -35,9 +36,14 @@ public class TelaInicial extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Trabalho Criptografia");
 
-        jButton1.setText("Algoritmo 2");
+        jButton1.setText("Algoritmo AES");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
-        jButton2.setText("Algoritmo 1");
+        jButton2.setText("Algoritmo RSA");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
@@ -73,6 +79,11 @@ public class TelaInicial extends javax.swing.JFrame {
         TelaRSAOpcoes view = new TelaRSAOpcoes();
         view.setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+      TelaAES view = new TelaAES();
+        view.setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
