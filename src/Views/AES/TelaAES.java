@@ -77,7 +77,7 @@ public class TelaAES extends javax.swing.JFrame {;
         jLabel15 = new javax.swing.JLabel();
         tamanhoChaveD = new javax.swing.JComboBox();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("AES");
         setLocation(new java.awt.Point(0, 0));
 
@@ -200,9 +200,9 @@ public class TelaAES extends javax.swing.JFrame {;
                 .addComponent(jButton2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel5)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(89, 89, 89))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -260,28 +260,28 @@ public class TelaAES extends javax.swing.JFrame {;
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane4)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel14)
-                            .addComponent(jLabel13))
+                        .addComponent(jLabel14)
                         .addGap(18, 18, 18)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(chaveSecretaD)
-                            .addComponent(tamanhoChaveD, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(tamanhoChaveD, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jScrollPane5)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 144, Short.MAX_VALUE)
+                        .addComponent(jButton3)
+                        .addGap(130, 130, 130))
+                    .addComponent(jScrollPane4)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel15)
                         .addGap(18, 18, 18)
                         .addComponent(chooseModoOD, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jButton3)
-                        .addGap(130, 130, 130))
-                    .addComponent(jScrollPane5)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLabel13)
+                        .addGap(44, 44, 44)
+                        .addComponent(chaveSecretaD))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel7)
-                            .addComponent(jLabel9))
+                            .addComponent(jLabel9)
+                            .addComponent(jLabel7))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -290,7 +290,7 @@ public class TelaAES extends javax.swing.JFrame {;
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(14, 14, 14)
                 .addComponent(jLabel7)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -300,17 +300,17 @@ public class TelaAES extends javax.swing.JFrame {;
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel14)
                     .addComponent(tamanhoChaveD, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel13)
                     .addComponent(chaveSecretaD, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jButton3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel9)
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(79, 79, 79))
+                .addComponent(jLabel9)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -338,15 +338,71 @@ public class TelaAES extends javax.swing.JFrame {;
                     .addComponent(jLabel1)
                     .addComponent(jLabel2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 432, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 0, Short.MAX_VALUE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        int bitsNeeded = Integer.parseInt(tamanhoChaveD.getSelectedItem().toString())/8;
+        if(chaveSecretaD.getText().getBytes().length != bitsNeeded) {
+            JOptionPane.showMessageDialog(this, "Sua chave secreta precisa ter "+ bitsNeeded + " bits de tamanho");
+        } else {
+            if(aes.key == null && chaveSecretaD.getText() == ""){
+                JOptionPane.showMessageDialog(this, "Informe a chave privada!");
+            }else if(chaveSecretaD.getText()!=""){
+                aes.setPrivateKey(chaveSecretaD.getText());
+            }
+
+            try{
+                aes.mode = chooseModoOD.getSelectedItem().toString();
+                String decriptedText = aes.decrypt(textoEncriptadoD.getText());
+                textoClaroD.setText(decriptedText);
+            }catch(Exception e){
+                JOptionPane.showMessageDialog(this, "Erro ao decriptar texto!");
+            }
+        }
+
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void keySizeEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_keySizeEActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_keySizeEActionPerformed
+
+    private void chooseModoOEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chooseModoOEActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_chooseModoOEActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        JFileChooser chooser = new JFileChooser();
+        chooser.setDialogTitle("Escolher Arquivo de Texto");
+        chooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
+
+        chooser.showOpenDialog(this);
+        try {
+            BufferedReader buffRead = new BufferedReader(new FileReader(chooser.getSelectedFile().getAbsolutePath()));
+            String line = "";
+            String text= "";
+            while (true) {
+                if (line != null) {
+                    text +=line;
+
+                } else
+                break;
+                line = buffRead.readLine();
+
+            }
+            buffRead.close();
+            textoClaroE.setText(text);
+        } catch (IOException ex) {
+            Logger.getLogger(TelaAES.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         int bitsNeeded = Integer.parseInt(keySizeE.getSelectedItem().toString())/8;
@@ -366,71 +422,10 @@ public class TelaAES extends javax.swing.JFrame {;
                 textoEncriptadoE.setText(encriptedText);
                 aes.setPrivateKey(null);
             }catch(Exception e){
-                 JOptionPane.showMessageDialog(this, "Erro ao encriptar texto!");
+                JOptionPane.showMessageDialog(this, "Erro ao encriptar texto!");
             }
         }
     }//GEN-LAST:event_jButton2ActionPerformed
-
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        int bitsNeeded = Integer.parseInt(tamanhoChaveD.getSelectedItem().toString())/8;
-        if(chaveSecretaD.getText().getBytes().length != bitsNeeded) {
-            JOptionPane.showMessageDialog(this, "Sua chave secreta precisa ter "+ bitsNeeded + " bits de tamanho");
-        } else {
-            if(aes.key == null && chaveSecretaD.getText() == ""){
-                JOptionPane.showMessageDialog(this, "Informe a chave privada!");
-            }else if(chaveSecretaD.getText()!=""){
-                aes.setPrivateKey(chaveSecretaD.getText());
-            }
-            
-            try{
-                aes.mode = chooseModoOD.getSelectedItem().toString();
-                String decriptedText = aes.decrypt(textoEncriptadoD.getText());
-                textoClaroD.setText(decriptedText);
-            }catch(Exception e){
-                JOptionPane.showMessageDialog(this, "Erro ao decriptar texto!");
-            }
-        }
-       
-    }//GEN-LAST:event_jButton3ActionPerformed
-
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        JFileChooser chooser = new JFileChooser();
-        chooser.setDialogTitle("Escolher Arquivo de Texto");
-        chooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
-        
-        
-      
-        chooser.showOpenDialog(this);
-         try {
-        BufferedReader buffRead = new BufferedReader(new FileReader(chooser.getSelectedFile().getAbsolutePath()));	
-            String line = "";
-            String text= "";
-		while (true) {
-			if (line != null) {
-                                text +=line;
-
-			} else
-				break;
-			line = buffRead.readLine();
-                        
-		}
-            buffRead.close();
-            textoClaroE.setText(text);
-        } catch (IOException ex) {
-            Logger.getLogger(TelaAES.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
-        
-       
-    }//GEN-LAST:event_jButton5ActionPerformed
-
-    private void keySizeEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_keySizeEActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_keySizeEActionPerformed
-
-    private void chooseModoOEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chooseModoOEActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_chooseModoOEActionPerformed
 
     /**
      * @param args the command line arguments
