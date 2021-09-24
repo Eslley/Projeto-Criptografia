@@ -72,6 +72,5 @@ public class RSAUtil {
         } catch (NoSuchAlgorithmException e) {
             System.err.println(e.getMessage());
         }
-
     }
 }
