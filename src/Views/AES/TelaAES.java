@@ -5,19 +5,24 @@
  */
 package Views.AES;
 
+import AES.AESUtil;
 import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author VAIO
  */
 public class TelaAES extends javax.swing.JFrame {;
-
+    AESUtil aes;
+        
     /**
      * Creates new form TelaRSA
      */
     public TelaAES() {
         initComponents();
+        
+        aes = new AESUtil();
     }
 
     /**
@@ -111,8 +116,18 @@ public class TelaAES extends javax.swing.JFrame {;
 
         chooseModoOE.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         chooseModoOE.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "ECB", "CBC" }));
+        chooseModoOE.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chooseModoOEActionPerformed(evt);
+            }
+        });
 
         tamanhoChaveE.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "128", "192", "256" }));
+        tamanhoChaveE.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tamanhoChaveEActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -323,12 +338,48 @@ public class TelaAES extends javax.swing.JFrame {;
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-  
-        
+        int bitsNeeded = Integer.parseInt(tamanhoChaveE.getSelectedItem().toString())/8;
+        if(chaveSecretaE.getText().getBytes().length != bitsNeeded) {
+            JOptionPane.showMessageDialog(this, "Sua chave secreta precisa ter "+ bitsNeeded + " bits de tamanho");
+        } else {
+            if(aes.key == null && chaveSecretaE.getText() == ""){
+                JOptionPane.showMessageDialog(this, "Informe a chave secreta!");
+                return;
+            }else if(chaveSecretaE.getText()!=""){
+                aes.setPrivateKey(chaveSecretaE.getText());
+            }
+
+            try{
+                aes.mode = chooseModoOE.getSelectedItem().toString();
+                String textoEncriptado = aes.encrypt(textoClaroE.getText());
+                textoEncriptadoE.setText(textoEncriptado);
+                aes.setPrivateKey(null);
+            }catch(Exception e){
+                 JOptionPane.showMessageDialog(this, "Erro ao encriptar texto!");
+            }
+        }
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        
+        int bitsNeeded = Integer.parseInt(tamanhoChaveD.getSelectedItem().toString())/8;
+        if(chaveSecretaD.getText().getBytes().length != bitsNeeded) {
+            JOptionPane.showMessageDialog(this, "Sua chave secreta precisa ter "+ bitsNeeded + " bits de tamanho");
+        } else {
+            if(aes.key == null && chaveSecretaD.getText() == ""){
+                JOptionPane.showMessageDialog(this, "Informe a chave privada!");
+            }else if(chaveSecretaD.getText()!=""){
+                aes.setPrivateKey(chaveSecretaD.getText());
+            }
+            
+            try{
+                aes.mode = chooseModoOD.getSelectedItem().toString();
+                String textoDecriptado = aes.decrypt(textoEncriptadoD.getText());
+                textoClaroD.setText(textoDecriptado);
+            }catch(Exception e){
+                JOptionPane.showMessageDialog(this, "Erro ao decriptar texto!");
+            }
+        }
+       
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
@@ -336,8 +387,19 @@ public class TelaAES extends javax.swing.JFrame {;
         chooser.setDialogTitle("Escolher Arquivo de Texto");
         chooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
         
+        
+        textoClaroE.setText(chooser.getSelectedFile().getAbsolutePath());
+       
         chooser.showOpenDialog(this);
     }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void tamanhoChaveEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tamanhoChaveEActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tamanhoChaveEActionPerformed
+
+    private void chooseModoOEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chooseModoOEActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_chooseModoOEActionPerformed
 
     /**
      * @param args the command line arguments
