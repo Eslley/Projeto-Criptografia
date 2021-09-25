@@ -2,16 +2,13 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-<<<<<<< HEAD
-        <group/>
-=======
         <group>
             <file>file:/C:/Users/VAIO/Desktop/Nova%20pasta%20(3)/Projeto-Criptografia/src/RSA/RSAKeyPairGenerator.java</file>
-            <file>file:/C:/Users/VAIO/Desktop/Nova%20pasta%20(3)/Projeto-Criptografia/src/AES/ExemploCriptografia.java</file>
+            <file>file:/C:/Users/VAIO/Desktop/Nova%20pasta%20(3)/Projeto-Criptografia/src/Views/AES/TelaAES.java</file>
+            <file>file:/C:/Users/VAIO/Desktop/Nova%20pasta%20(3)/Projeto-Criptografia/src/AES/AESUtil.java</file>
             <file>file:/C:/Users/VAIO/Desktop/Nova%20pasta%20(3)/Projeto-Criptografia/src/Views/RSA/TelaRSAGerador.java</file>
             <file>file:/C:/Users/VAIO/Desktop/Nova%20pasta%20(3)/Projeto-Criptografia/src/Views/RSA/TelaRSAED.java</file>
             <file>file:/C:/Users/VAIO/Desktop/Nova%20pasta%20(3)/Projeto-Criptografia/src/RSA/EncriptaDecriptaRSA.java</file>
         </group>
->>>>>>> 5994c24069960a9b66025ba89672ed09ecedcc4a
     </open-files>
 </project-private>

@@ -32,9 +32,9 @@ public class EncriptaDecriptaRSA {
         pubKey = (PublicKey) inputStream.readObject();
         key = Base64.getEncoder().encodeToString(pubKey.getEncoded());
       } catch (Exception e) {
-          
+          System.out.println(e);
       }
-      
+
       return key;
   }
   

@@ -2,6 +2,7 @@ package RSA;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.ObjectOutputStream;
 import java.security.*;
 import java.util.Base64;
 
@@ -19,14 +20,14 @@ public class RSAKeyPairGenerator {
         this.publicKey = pair.getPublic();
     }
 
-    public void writeToFile(String path, byte[] key) throws IOException {
-        File f = new File(path);
-        f.getParentFile().mkdirs();
-
-        FileOutputStream fos = new FileOutputStream(f);
-        fos.write(key);
-        fos.flush();
-        fos.close();
+    public void writeToFile(String path, Object key) throws IOException {
+        File chave = new File(path);
+        chave.getParentFile().mkdirs();
+        chave.createNewFile();
+        
+        ObjectOutputStream chaveOS = new ObjectOutputStream(new FileOutputStream(chave));
+        chaveOS.writeObject(key);
+        chaveOS.close();
     }
 
     public PrivateKey getPrivateKey() {

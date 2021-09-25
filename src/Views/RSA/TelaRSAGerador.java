@@ -146,16 +146,12 @@ public class TelaRSAGerador extends javax.swing.JFrame {
             System.out.println(jComboBox1.getSelectedItem().toString());
             int keySize = Integer.parseInt(jComboBox1.getSelectedItem().toString());
             RSAKeyPairGenerator keyPairGenerator = new RSAKeyPairGenerator(keySize);
-            keyPairGenerator.writeToFile("RSA/privateKey", keyPairGenerator.getPrivateKey().getEncoded());
-            keyPairGenerator.writeToFile("RSA/publicKey", keyPairGenerator.getPublicKey().getEncoded());
-            System.out.println(Base64.getEncoder().encodeToString(keyPairGenerator.getPublicKey().getEncoded()));
-            System.out.println(Base64.getEncoder().encodeToString(keyPairGenerator.getPrivateKey().getEncoded()));
+            keyPairGenerator.writeToFile("RSA/privateKey", keyPairGenerator.getPrivateKey());
+            keyPairGenerator.writeToFile("RSA/publicKey", keyPairGenerator.getPublicKey());
             
             jTextArea1.setText(Base64.getEncoder().encodeToString(keyPairGenerator.getPublicKey().getEncoded()));
             jTextArea2.setText(Base64.getEncoder().encodeToString(keyPairGenerator.getPrivateKey().getEncoded()));
-            
-            
-            
+
         } catch (NoSuchAlgorithmException | IOException ex) {
             Logger.getLogger(TelaRSAGerador.class.getName()).log(Level.SEVERE, null, ex);
         }
