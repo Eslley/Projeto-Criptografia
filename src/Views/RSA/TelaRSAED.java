@@ -109,7 +109,7 @@ public class TelaRSAED extends javax.swing.JFrame {
         jScrollPane3.setViewportView(chavePublica);
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabel6.setText("Tipo do Chiper");
+        jLabel6.setText("Tipo de cifra");
 
         chooseCipherE.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         chooseCipherE.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "RSA", "RSA/ECB/PKCS1Padding", "RSA/ECB/OAEPWithSHA-1AndMGF1Padding" }));
@@ -220,7 +220,7 @@ public class TelaRSAED extends javax.swing.JFrame {
         jScrollPane6.setViewportView(chavePrivada);
 
         jLabel10.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabel10.setText("Tipo do Chiper");
+        jLabel10.setText("Tipo de cifra");
 
         chooseCipherD.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         chooseCipherD.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "RSA", "RSA/ECB/PKCS1Padding", "RSA/ECB/OAEPWithSHA-1AndMGF1Padding" }));
