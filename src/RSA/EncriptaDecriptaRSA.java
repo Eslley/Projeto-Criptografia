@@ -85,7 +85,7 @@ public class EncriptaDecriptaRSA {
         priKey = privateKey;
     }
   
-  public static String criptografa(String texto) {
+  public static String criptografaComPub(String texto) {
     byte[] cipherText = null;
 
     try {
@@ -100,8 +100,23 @@ public class EncriptaDecriptaRSA {
 
     return Base64.getEncoder().encodeToString(cipherText);
   }
+  public static String criptografaComPri(String texto) {
+    byte[] cipherText = null;
 
-  public static String decriptografa(byte[] texto) throws UnsupportedEncodingException {
+    try {
+      
+      final Cipher cipher = Cipher.getInstance(cipherInstance);
+      // Criptografa o texto puro usando a chave privada
+      cipher.init(Cipher.ENCRYPT_MODE, priKey);
+      cipherText = cipher.doFinal(texto.getBytes());
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
+
+    return Base64.getEncoder().encodeToString(cipherText);
+  }
+
+  public static String decriptografaComPri(byte[] texto) throws UnsupportedEncodingException {
     byte[] dectyptedText = null;
 
     try {   
@@ -116,4 +131,19 @@ public class EncriptaDecriptaRSA {
     return new String (dectyptedText, "ISO-8859-1");
     
   }
+  public static String decriptografaComPub(byte[] texto) throws UnsupportedEncodingException {
+    byte[] dectyptedText = null;
+
+    try {   
+      final Cipher cipher = Cipher.getInstance(cipherInstance);
+      cipher.init(Cipher.DECRYPT_MODE, pubKey);
+      dectyptedText = cipher.doFinal(texto);
+
+    } catch (Exception ex) {
+      ex.printStackTrace();
+    }
+    return new String (dectyptedText, "ISO-8859-1");
+    
+  }
 }
+

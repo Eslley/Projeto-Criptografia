@@ -5,6 +5,7 @@
  */
 package Views.RSA;
 
+
 import RSA.EncriptaDecriptaRSA;
 import java.util.Base64;
 import javax.swing.JFileChooser;
@@ -12,19 +13,18 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author VAIO
+ * @author Anderson Guimarães
  */
-public class TelaRSAED extends javax.swing.JFrame {
-    
-    EncriptaDecriptaRSA rsa;
+public class TelaRSAEDIr extends javax.swing.JFrame {
+     EncriptaDecriptaRSA rsa;
 
     /**
-     * Creates new form TelaRSA
+     * Creates new form TelaRSAEDIr
      */
-    public TelaRSAED() {
+    public TelaRSAEDIr() {
         initComponents();
         
-        rsa = new EncriptaDecriptaRSA();
+         rsa = new EncriptaDecriptaRSA();
     }
 
     /**
@@ -46,12 +46,11 @@ public class TelaRSAED extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
-        chavePublica = new javax.swing.JTextArea();
+        chavePrivada = new javax.swing.JTextArea();
         jLabel6 = new javax.swing.JLabel();
         chooseCipherE = new javax.swing.JComboBox();
         jButton1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane4 = new javax.swing.JScrollPane();
         textoEncriptadoD = new javax.swing.JTextArea();
@@ -62,14 +61,13 @@ public class TelaRSAED extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         jButton3 = new javax.swing.JButton();
         jScrollPane6 = new javax.swing.JScrollPane();
-        chavePrivada = new javax.swing.JTextArea();
+        chavePublica = new javax.swing.JTextArea();
         jLabel10 = new javax.swing.JLabel();
         chooseCipherD = new javax.swing.JComboBox();
         jButton4 = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("RSA");
-        setLocation(new java.awt.Point(0, 0));
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
@@ -89,7 +87,7 @@ public class TelaRSAED extends javax.swing.JFrame {
         jLabel3.setText("Texto Claro");
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabel4.setText("Chave Pública");
+        jLabel4.setText("Chave Privada");
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel5.setText("Texto Encriptado");
@@ -102,11 +100,11 @@ public class TelaRSAED extends javax.swing.JFrame {
             }
         });
 
-        chavePublica.setColumns(20);
-        chavePublica.setFont(new java.awt.Font("Monospaced", 0, 12)); // NOI18N
-        chavePublica.setLineWrap(true);
-        chavePublica.setRows(5);
-        jScrollPane3.setViewportView(chavePublica);
+        chavePrivada.setColumns(20);
+        chavePrivada.setFont(new java.awt.Font("Monospaced", 0, 12)); // NOI18N
+        chavePrivada.setLineWrap(true);
+        chavePrivada.setRows(5);
+        jScrollPane3.setViewportView(chavePrivada);
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel6.setText("Tipo de cifra");
@@ -114,7 +112,7 @@ public class TelaRSAED extends javax.swing.JFrame {
         chooseCipherE.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         chooseCipherE.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "RSA", "RSA/ECB/PKCS1Padding", "RSA/ECB/OAEPWithSHA-1AndMGF1Padding" }));
 
-        jButton1.setText("Escolher Chave Pública");
+        jButton1.setText("Escolher Chave Privada");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -179,9 +177,6 @@ public class TelaRSAED extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel1.setText("Encriptação");
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel2.setText("Decriptação");
-
         jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         textoEncriptadoD.setColumns(20);
@@ -200,7 +195,7 @@ public class TelaRSAED extends javax.swing.JFrame {
         jLabel7.setText("Texto Encriptado");
 
         jLabel8.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabel8.setText("Chave Privada");
+        jLabel8.setText("Chave Publica");
 
         jLabel9.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel9.setText("Texto Claro");
@@ -213,11 +208,11 @@ public class TelaRSAED extends javax.swing.JFrame {
             }
         });
 
-        chavePrivada.setColumns(20);
-        chavePrivada.setFont(new java.awt.Font("Monospaced", 0, 12)); // NOI18N
-        chavePrivada.setLineWrap(true);
-        chavePrivada.setRows(5);
-        jScrollPane6.setViewportView(chavePrivada);
+        chavePublica.setColumns(20);
+        chavePublica.setFont(new java.awt.Font("Monospaced", 0, 12)); // NOI18N
+        chavePublica.setLineWrap(true);
+        chavePublica.setRows(5);
+        jScrollPane6.setViewportView(chavePublica);
 
         jLabel10.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel10.setText("Tipo de cifra");
@@ -225,7 +220,7 @@ public class TelaRSAED extends javax.swing.JFrame {
         chooseCipherD.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         chooseCipherD.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "RSA", "RSA/ECB/PKCS1Padding", "RSA/ECB/OAEPWithSHA-1AndMGF1Padding" }));
 
-        jButton4.setText("Escolher Chave Privada");
+        jButton4.setText("Escolher Chave Publica");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton4ActionPerformed(evt);
@@ -287,97 +282,95 @@ public class TelaRSAED extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel2.setText("Decriptação");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(148, 148, 148)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(515, Short.MAX_VALUE)
                 .addComponent(jLabel2)
-                .addGap(144, 144, 144))
+                .addGap(154, 154, 154))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addContainerGap()
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(138, 138, 138)
+                            .addComponent(jLabel1)))
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(15, 15, 15)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addContainerGap()
+                .addComponent(jLabel2)
+                .addContainerGap(523, Short.MAX_VALUE))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addContainerGap()
                     .addComponent(jLabel1)
-                    .addComponent(jLabel2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addContainerGap()))
         );
 
         pack();
-        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        JFileChooser chooser = new JFileChooser();
-        chooser.setDialogTitle("Escolher Chave Pública");
-        chooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
-        
-        chooser.showOpenDialog(this);
-        
-        chavePublica.setText(rsa.getPublicKey(chooser.getSelectedFile().getAbsolutePath()));
-
-
-    }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        JFileChooser chooser = new JFileChooser();
-        chooser.setDialogTitle("Escolher Chave Privada");
-        chooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
-        
-        chooser.showOpenDialog(this);
-        
-        chavePrivada.setText(rsa.getPrivateKey(chooser.getSelectedFile().getAbsolutePath()));
-    }//GEN-LAST:event_jButton4ActionPerformed
-
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-  
-        if(rsa.pubKey == null && chavePublica.getText() == "") {
-            JOptionPane.showMessageDialog(this, "Informe a chave pública!");
-            return;
-        } else if(chavePublica.getText() != "") {
-            rsa.setPublicKey(chavePublica.getText());
-        }
-        
-        rsa.cipherInstance = (String) chooseCipherE.getSelectedItem();
-        try {
-            String textoEncriptado = rsa.criptografaComPub(textoClaroE.getText());
-        
-            textoEncriptadoE.setText(textoEncriptado);
-        } catch (Exception e) {
-            
-            JOptionPane.showMessageDialog(this, "Erro ao encriptar texto!");
-        }
-        
-    }//GEN-LAST:event_jButton2ActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        
-        if(rsa.pubKey == null && chavePrivada.getText() == "") {
+        if(rsa.priKey == null && chavePrivada.getText() == "") {
             JOptionPane.showMessageDialog(this, "Informe a chave privada!");
             return;
         } else if(chavePrivada.getText() != "") {
             rsa.setPrivateKey(chavePrivada.getText());
         }
-        
+
+        rsa.cipherInstance = (String) chooseCipherE.getSelectedItem();
+        try {
+            String textoEncriptado = rsa.criptografaComPri(textoClaroE.getText());
+
+            textoEncriptadoE.setText(textoEncriptado);
+        } catch (Exception e) {
+
+            JOptionPane.showMessageDialog(this, "Erro ao encriptar texto!");
+        }
+
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        JFileChooser chooser = new JFileChooser();
+        chooser.setDialogTitle("Escolher Chave Privada");
+        chooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
+
+        chooser.showOpenDialog(this);
+
+        chavePrivada.setText(rsa.getPrivateKey(chooser.getSelectedFile().getAbsolutePath()));
+
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+
+        if(rsa.pubKey == null && chavePublica.getText() == "") {
+            JOptionPane.showMessageDialog(this, "Informe a chave publica!");
+            return;
+        } else if(chavePublica.getText() != "") {
+            rsa.setPublicKey(chavePublica.getText());
+        }
+
         rsa.cipherInstance = (String) chooseCipherD.getSelectedItem();
         try {
-            
-            String textoDecriptado = rsa.decriptografaComPri(Base64.getDecoder().decode(textoEncriptadoD.getText()));
+
+            String textoDecriptado = rsa.decriptografaComPub(Base64.getDecoder().decode(textoEncriptadoD.getText()));
 
             textoClaroD.setText(textoDecriptado);
         } catch (Exception e) {
@@ -386,41 +379,20 @@ public class TelaRSAED extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButton3ActionPerformed
 
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        JFileChooser chooser = new JFileChooser();
+        chooser.setDialogTitle("Escolher Chave Publica");
+        chooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
+
+        chooser.showOpenDialog(this);
+
+        chavePublica.setText(rsa.getPublicKey(chooser.getSelectedFile().getAbsolutePath()));
+    }//GEN-LAST:event_jButton4ActionPerformed
+
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(TelaRSAED.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(TelaRSAED.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(TelaRSAED.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(TelaRSAED.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new TelaRSAED().setVisible(true);
-            }
-        });
-    }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextArea chavePrivada;
